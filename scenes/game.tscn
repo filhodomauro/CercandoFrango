@@ -24,6 +24,7 @@ autostart = true
 
 [node name="control" type="Control" parent="."]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -149,49 +150,54 @@ max_lines_visible = -1
 
 [node name="gameOver" type="Control" parent="."]
 
-visibility/visible = false
+anchor/right = 1
+anchor/bottom = 1
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
+margin/right = 0.0
+margin/bottom = 0.0
 script/script = ExtResource( 4 )
 
 [node name="label" type="Label" parent="gameOver"]
 
+anchor/left = 3
+anchor/right = 3
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 253.0
+margin/left = -221.0
 margin/top = 285.0
-margin/right = 979.0
+margin/right = -947.0
 margin/bottom = 415.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.554688, 0.0281677, 0.0281677, 1 )
-text = "Game Over"
+text = "GAME_OVER"
+align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="retry" type="Label" parent="gameOver"]
 
-visibility/visible = false
+anchor/left = 3
+anchor/right = 3
 rect/scale = Vector2( 0.5, 0.5 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 535.0
+margin/left = -503.0
 margin/top = 419.0
-margin/right = 906.0
+margin/right = -874.0
 margin/bottom = 549.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.0732422, 0.75, 0.11554, 1 )
-text = "Retry"
+text = "RETRY"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
