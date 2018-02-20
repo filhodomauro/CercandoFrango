@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scripts/home.gd" type="Script" id=1]
-[ext_resource path="res://assets/home.png" type="Texture" id=2]
+[ext_resource path="res://assets/background_menu.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/foo120.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://assets/control/button.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/foo60.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://assets/fonts/foo40.fnt" type="BitmapFont" id=6]
 
 [node name="control" type="Control"]
 
@@ -30,40 +34,129 @@ margin/bottom = -720.0
 texture = ExtResource( 2 )
 stretch_mode = 0
 
-[node name="credits" type="Button" parent="."]
+[node name="title" type="Label" parent="."]
 
-focus/ignore_mouse = false
+focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 1040.0
-margin/top = 595.0
+size_flags/vertical = 0
+margin/left = 74.0
+margin/top = 27.0
 margin/right = 1240.0
-margin/bottom = 675.0
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-text = "Credits"
-flat = false
+margin/bottom = 159.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.976562, 0.925779, 0.164032, 1 )
+text = "Cercando o Frango"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
-[node name="start" type="Button" parent="."]
+[node name="start" type="TextureButton" parent="."]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 559.0
-margin/top = 375.0
-margin/right = 759.0
-margin/bottom = 455.0
+margin/left = 447.0
+margin/top = 404.0
+margin/right = 831.0
+margin/bottom = 500.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Start"
-flat = false
+textures/normal = ExtResource( 4 )
+params/resize_mode = 0
+params/scale = Vector2( 1.5, 1.5 )
+params/stretch_mode = 0
 
-[connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
+[node name="label" type="Label" parent="start"]
+
+anchor/left = 3
+anchor/top = 3
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 91.0
+margin/top = 39.0
+margin/right = 278.0
+margin/bottom = 75.0
+custom_fonts/font = ExtResource( 5 )
+text = "Start"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="credits" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 979.0
+margin/top = 605.0
+margin/right = 1235.0
+margin/bottom = 685.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="label" type="Label" parent="credits"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 43.0
+margin/top = 12.0
+margin/right = 198.0
+margin/bottom = 56.0
+custom_fonts/font = ExtResource( 6 )
+text = "Credits"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="tutorial" type="TextureButton" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 67.0
+margin/top = 603.0
+margin/right = 323.0
+margin/bottom = 667.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+textures/normal = ExtResource( 4 )
+params/resize_mode = 0
+params/stretch_mode = 0
+
+[node name="Label" type="Label" parent="tutorial"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 36.0
+margin/top = 12.0
+margin/right = 216.0
+margin/bottom = 56.0
+custom_fonts/font = ExtResource( 6 )
+text = "Tutorial"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+
+[connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
 
 
