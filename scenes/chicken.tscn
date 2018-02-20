@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=1]
+
+[ext_resource path="res://scripts/final_chicken.gd" type="Script" id=1]
+[ext_resource path="res://assets/chicken/Chicken01.png" type="Texture" id=2]
+[ext_resource path="res://assets/chicken/Chicken02.png" type="Texture" id=3]
+[ext_resource path="res://assets/chicken/Chicken03.png" type="Texture" id=4]
+[ext_resource path="res://assets/chicken/Chicken04.png" type="Texture" id=5]
+[ext_resource path="res://assets/chicken/Chicken05.png" type="Texture" id=6]
+[ext_resource path="res://assets/chicken/Chicken06.png" type="Texture" id=7]
+[ext_resource path="res://assets/chicken/Chicken_Hit.png" type="Texture" id=8]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 42.7505
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 20.0
+} ]
+
+[node name="chicken" type="Area2D"]
+
+z/z = 2
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.199664, -2.79525 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 0.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+
+[node name="flyingSprite" type="AnimatedSprite" parent="."]
+
+frames = SubResource( 2 )
+animation = "default"
+frame = 3
+playing = true
+
+[node name="hitSprite" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 8 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( 0.199664, -2.79525 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="hitTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = false
+autostart = false
+
+[connection signal="input_event" from="." to="." method="_on_Chicken_input_event"]
+
+[connection signal="timeout" from="hitTimer" to="." method="_on_hitTimer_timeout"]
+
+
