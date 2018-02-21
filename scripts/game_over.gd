@@ -1,9 +1,13 @@
 extends Control
 
 var can_reload = false
+var label_high_score
+var label_best_score
 
 func _ready():
 	set_process_input(true)
+	self.label_high_score = tr("GAME_OVER_SCORE")
+	self.label_best_score = tr("GAME_OVER_BEST_SCORE")
 	
 func _input(event):
 	if event.type == InputEvent.SCREEN_TOUCH and can_reload:

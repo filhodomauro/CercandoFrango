@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=7 format=1]
 
 [ext_resource path="res://scripts/final_game.gd" type="Script" id=1]
 [ext_resource path="res://assets/background.png" type="Texture" id=2]
 [ext_resource path="res://assets/font150.fnt" type="BitmapFont" id=3]
 [ext_resource path="res://scripts/game_over.gd" type="Script" id=4]
+[ext_resource path="res://assets/fonts/foo120.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://assets/fonts/foo60.fnt" type="BitmapFont" id=6]
 
 [node name="game" type="Node2D"]
 
@@ -150,6 +152,7 @@ max_lines_visible = -1
 
 [node name="gameOver" type="Control" parent="."]
 
+visibility/visible = false
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -170,12 +173,12 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = -221.0
-margin/top = 285.0
-margin/right = -947.0
-margin/bottom = 415.0
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0.554688, 0.0281677, 0.0281677, 1 )
+margin/left = -216.0
+margin/top = 188.0
+margin/right = -1020.0
+margin/bottom = 320.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.617188, 0.0602722, 0.0602722, 1 )
 text = "GAME_OVER"
 align = 1
 percent_visible = 1.0
@@ -184,21 +187,22 @@ max_lines_visible = -1
 
 [node name="retry" type="Label" parent="gameOver"]
 
+visibility/visible = false
 anchor/left = 3
 anchor/right = 3
-rect/scale = Vector2( 0.5, 0.5 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = -503.0
-margin/top = 419.0
-margin/right = -874.0
+margin/left = -216.0
+margin/top = 449.0
+margin/right = -1021.0
 margin/bottom = 549.0
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.0732422, 0.75, 0.11554, 1 )
 text = "RETRY"
 align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
