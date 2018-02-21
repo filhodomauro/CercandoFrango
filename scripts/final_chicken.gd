@@ -9,12 +9,14 @@ var ecuador
 var greenwich
 var disable_colision
 var hit = false
+var is_freezed = false
 signal scaped
 
 func _ready():
 	limits = get_viewport().get_rect().size
 	ecuador = limits.y / 2
 	greenwich = limits.x / 2
+	self.connect("freeze", self, "freeze")	
 	set_process(true)
 
 func _on_Chicken_input_event( viewport, event, shape_idx ):
@@ -26,7 +28,7 @@ func _process(delta):
 		if is_out_of_range():
 			emit_signal("scaped")
 			queue_free()
-		else:
+		elif not is_freezed:
 			position += delta * self.speed * self.target.normalized()
 			set_pos(position)
 
@@ -77,5 +79,14 @@ func _on_hitTimer_timeout():
 	revert()
 	get_node("hitSprite").hide()
 	get_node("flyingSprite").show()
+	self.is_freezed = false
 	self.hit = false
-	
+
+func freeze():
+	self.is_freezed = true
+	get_node("flyingSprite").stop()
+	get_node("freeze_timer").start()
+
+func _on_freeze_timer_timeout():
+	self.is_freezed = false
+	get_node("freeze_timer").stop()

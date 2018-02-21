@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://scripts/final_chicken.gd" type="Script" id=1]
 [ext_resource path="res://assets/chicken/Chicken01.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/chicken/Chicken05.png" type="Texture" id=6]
 [ext_resource path="res://assets/chicken/Chicken06.png" type="Texture" id=7]
 [ext_resource path="res://assets/chicken/Chicken_Hit.png" type="Texture" id=8]
+[ext_resource path="res://assets/ice.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -40,13 +41,20 @@ script/script = ExtResource( 1 )
 
 frames = SubResource( 2 )
 animation = "default"
-frame = 3
+frame = 1
 playing = true
 
 [node name="hitSprite" type="Sprite" parent="."]
 
 visibility/visible = false
 texture = ExtResource( 8 )
+
+[node name="freezed_sprite" type="Sprite" parent="."]
+
+visibility/visible = false
+transform/scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 9 )
+modulate = Color( 1, 1, 1, 0.754078 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
 
@@ -62,8 +70,17 @@ wait_time = 0.5
 one_shot = false
 autostart = false
 
+[node name="freeze_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 10.0
+one_shot = false
+autostart = false
+
 [connection signal="input_event" from="." to="." method="_on_Chicken_input_event"]
 
 [connection signal="timeout" from="hitTimer" to="." method="_on_hitTimer_timeout"]
+
+[connection signal="timeout" from="freeze_timer" to="." method="_on_freeze_timer_timeout"]
 
 
