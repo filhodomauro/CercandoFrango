@@ -2,6 +2,8 @@ extends Node2D
 
 const START_POSITION = Vector2(0,0)
 const GREEN_COLOR = Color( 0.0732422, 0.75, 0.11554, 1 )
+const ALERT_COLOR = Color(0.910156,0.195541,0.195541)
+const CRITICAL_LIFE = 1
 
 var chicken = preload("res://scenes//chicken.tscn")
 var score
@@ -51,6 +53,8 @@ func chicken_scaped():
 			get_node("gameOver").game_over()
 			self.config["high_score"] = high_score
 			save_data(self.config)
+		elif lifes == CRITICAL_LIFE:
+			get_node("control/life").add_color_override("font_color", ALERT_COLOR)
 		
 
 func change_score(point):
