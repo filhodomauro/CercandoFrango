@@ -12,7 +12,7 @@ var hit = false
 signal scaped
 
 func _ready():
-	limits = get_viewport().get_rect().size
+	limits = Vector2(Globals.get("display/width"),Globals.get("display/height"))
 	ecuador = limits.y / 2
 	greenwich = limits.x / 2
 	set_process(true)
