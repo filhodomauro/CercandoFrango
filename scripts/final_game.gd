@@ -5,7 +5,7 @@ const GREEN_COLOR = Color( 0.0732422, 0.75, 0.11554, 1 )
 const ALERT_COLOR = Color(0.910156,0.195541,0.195541)
 const CRITICAL_LIFE = 1
 
-var chicken = preload("res://scenes//chicken.tscn")
+var chicken = preload("res://scenes/chicken.tscn")
 var score
 var lifes
 var high_score
@@ -23,7 +23,7 @@ func _ready():
 func add_chicken():
 	var chicken_node = chicken.instance()
 	var target = Vector2(1000,rand_range(100,600))
-	chicken_node.spawn(START_POSITION, speed, target, false)
+	chicken_node.spawn(START_POSITION, speed, target, false, get_node("freeze"))
 	chicken_node.connect("scaped", self, "chicken_scaped")
 	add_child(chicken_node)
 	change_score(1)

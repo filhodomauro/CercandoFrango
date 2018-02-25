@@ -9,6 +9,7 @@ var ecuador
 var greenwich
 var disable_colision
 var hit = false
+var is_freezed = false
 signal scaped
 
 func _ready():
@@ -26,16 +27,17 @@ func _process(delta):
 		if is_out_of_range():
 			emit_signal("scaped")
 			queue_free()
-		else:
+		elif not is_freezed:
 			position += delta * self.speed * self.target.normalized()
 			set_pos(position)
 
-func spawn(position, speed, target, disable_collision):
+func spawn(position, speed, target, disable_collision, freeze_node):
 	self.position = position
 	self.origin = position
 	self.target = target
 	self.speed = speed
 	self.disable_colision = disable_collision
+	freeze_node.connect("freeze", self, "freeze")
 	set_pos(position)
 
 func is_out_of_range():
@@ -44,6 +46,8 @@ func is_out_of_range():
 
 func hit():
 	self.hit = true
+	if self.is_freezed:
+		unfreeze()
 	get_node("flyingSprite").hide()
 	get_node("hitSprite").show()
 	get_node("hitTimer").start()
@@ -72,10 +76,25 @@ func get_nearest_limit(position):
 	return nearest
 
 func _on_hitTimer_timeout():
-	print("hit timeout")
 	get_node("hitTimer").stop()
 	revert()
 	get_node("hitSprite").hide()
 	get_node("flyingSprite").show()
+	self.is_freezed = false
 	self.hit = false
-	
+
+func freeze():
+	print("fix chicken")
+	self.is_freezed = true
+	get_node("flyingSprite").stop()
+	get_node("freezed_sprite").show()
+	get_node("freeze_timer").start()
+
+func _on_freeze_timer_timeout():
+	unfreeze()
+
+func unfreeze():
+	self.is_freezed = false
+	get_node("freezed_sprite").hide()
+	get_node("flyingSprite").play()
+	get_node("freeze_timer").stop()
