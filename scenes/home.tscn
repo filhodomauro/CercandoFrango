@@ -139,7 +139,7 @@ textures/normal = ExtResource( 4 )
 params/resize_mode = 0
 params/stretch_mode = 0
 
-[node name="Label" type="Label" parent="tutorial"]
+[node name="label" type="Label" parent="tutorial"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
@@ -158,5 +158,7 @@ max_lines_visible = -1
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 
 [connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
+
+[connection signal="pressed" from="tutorial" to="." method="_on_tutorial_pressed"]
 
 
