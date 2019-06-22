@@ -51,7 +51,7 @@ func chicken_scaped():
 			get_node("gameOver").game_over()
 			self.config["high_score"] = high_score
 			save_data(self.config)
-		
+
 
 func change_score(point):
 	self.score += point
