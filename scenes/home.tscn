@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://scripts/home.gd" type="Script" id=1]
 [ext_resource path="res://assets/background_menu.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/control/button.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/foo60.fnt" type="BitmapFont" id=5]
 [ext_resource path="res://assets/fonts/foo40.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://sounds/Joy Ride.ogg" type="AudioStream" id=7]
 
 [node name="control" type="Control"]
 
@@ -79,7 +80,7 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 91.0
 margin/top = 39.0
-margin/right = 278.0
+margin/right = 316.0
 margin/bottom = 75.0
 custom_fonts/font = ExtResource( 5 )
 text = "START"
@@ -114,10 +115,12 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 43.0
 margin/top = 12.0
-margin/right = 198.0
+margin/right = 232.0
 margin/bottom = 56.0
 custom_fonts/font = ExtResource( 6 )
 text = "CREDITS"
+align = 1
+valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -147,13 +150,24 @@ size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 36.0
 margin/top = 12.0
-margin/right = 216.0
+margin/right = 259.0
 margin/bottom = 56.0
 custom_fonts/font = ExtResource( 6 )
 text = "TUTORIAL"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="home_sound" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 7 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 0.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 

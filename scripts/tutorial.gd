@@ -1,15 +1,16 @@
-extends Node2D
+extends Control
 
-var steps = [
-	"Seja bem vindo ao Cercando o Frango. Toque para continuar..."
-]
-var current_step = 0
+var steps = preload("res://scenes/tutorial_steps.tscn")
 
 func _ready():
-	set_process(true)
+	var steps_node = steps.instance()
+	add_child(steps_node)
+	steps_node.open()
+	steps_node.connect("closed", self, "back")
 
-func _process(delta):
-	get_node("message").set_text(steps[current_step])
-	
-func _on_message_timer_timeout():
-	pass # replace with function body
+
+func _on_back_bt_pressed():
+	back()
+
+func back():
+	get_node("/root/global").change_scene("res://scenes/home.tscn")

@@ -48,10 +48,11 @@ func hit():
 	self.hit = true
 	if self.is_freezed:
 		unfreeze()
+	get_node("hit_sound").play()
 	get_node("flyingSprite").hide()
 	get_node("hitSprite").show()
 	get_node("hitTimer").start()
-	
+
 func revert():
 	var position = get_pos()
 	var nearest_limit = get_nearest_limit(position)
@@ -60,7 +61,7 @@ func revert():
 	else:
 		self.target.x *= -1
 	self.origin = position
-	
+
 func get_nearest_limit(position):
 	var nearest
 	if position.y < ecuador:
@@ -84,7 +85,6 @@ func _on_hitTimer_timeout():
 	self.hit = false
 
 func freeze():
-	print("fix chicken")
 	self.is_freezed = true
 	get_node("flyingSprite").stop()
 	get_node("freezed_sprite").show()

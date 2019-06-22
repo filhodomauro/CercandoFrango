@@ -47,7 +47,7 @@ func hit():
 	get_node("flyingSprite").hide()
 	get_node("hitSprite").show()
 	get_node("hitTimer").start()
-	
+
 func revert():
 	var position = get_pos()
 	var nearest_limit = get_nearest_limit(position)
@@ -56,7 +56,7 @@ func revert():
 	else:
 		self.target.x *= -1
 	self.origin = position
-	
+
 func get_nearest_limit(position):
 	var nearest
 	if position.y < ecuador:
@@ -78,4 +78,4 @@ func _on_hitTimer_timeout():
 	get_node("hitSprite").hide()
 	get_node("flyingSprite").show()
 	self.hit = false
-	
+

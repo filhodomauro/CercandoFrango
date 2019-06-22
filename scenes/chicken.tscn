@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=13 format=1]
 
 [ext_resource path="res://scripts/final_chicken.gd" type="Script" id=1]
 [ext_resource path="res://assets/chicken/Chicken01.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/chicken/Chicken06.png" type="Texture" id=7]
 [ext_resource path="res://assets/chicken/Chicken_Hit.png" type="Texture" id=8]
 [ext_resource path="res://assets/ice.png" type="Texture" id=9]
+[ext_resource path="res://sounds/chicken1.ogg" type="AudioStream" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -41,7 +42,7 @@ script/script = ExtResource( 1 )
 
 frames = SubResource( 2 )
 animation = "default"
-frame = 1
+frame = 5
 playing = true
 
 [node name="hitSprite" type="Sprite" parent="."]
@@ -76,6 +77,17 @@ process_mode = 1
 wait_time = 10.0
 one_shot = false
 autostart = false
+
+[node name="hit_sound" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 10 )
+stream/play = false
+stream/loop = false
+stream/volume_db = 0.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
 
 [connection signal="input_event" from="." to="." method="_on_Chicken_input_event"]
 
