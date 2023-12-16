@@ -1,6 +1,6 @@
 {
 	"AdMob" : true,
-	"Authentication" : false,
+	"Authentication" : true,
 	"Invites" : false,
 	"RemoteConfig" : false,
 	"Notification" : false,
@@ -11,8 +11,8 @@
 	{
 		"Google" : false,
 		"Twitter" : false,
-		"Facebook" : false,
-		"FacebookAppId" : "",
+		"Facebook" : true,
+		"FacebookAppId" : "482390392521272",
         "Anonymous": false,
         "EmailPassword": false
 	},

@@ -22,3 +22,6 @@ func _receive_message(tag, from, key, data):
 
 func is_interstitial_loaded():
 	return interstitial_loaded
+
+func login_facebook():
+	firebase.facebook_sign_in()

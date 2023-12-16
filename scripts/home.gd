@@ -8,3 +8,7 @@ func _on_credits_pressed():
 
 func _on_tutorial_pressed():
 	get_node("/root/global").change_scene("res://scenes/tutorial.tscn")
+
+
+func _on_facebook_login_pressed():
+	pass # replace with function body
